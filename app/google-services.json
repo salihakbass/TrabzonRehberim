@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "450436085860",
+    "project_id": "trabzonrehberim-f663d",
+    "storage_bucket": "trabzonrehberim-f663d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450436085860:android:d83423b098c62964998771",
+        "android_client_info": {
+          "package_name": "com.example.trabzonrehberim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBku3ToJ4jJWaGnChZgrOXAW4I6kCSrH5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
