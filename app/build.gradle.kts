@@ -30,6 +30,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -55,6 +56,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
     implementation ("com.google.android.material:material:1.8.0")
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation ("com.google.android.gms:play-services-maps:18.1.0")
 
 
     implementation(libs.androidx.core.ktx)
