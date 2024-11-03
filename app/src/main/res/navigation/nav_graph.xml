@@ -22,4 +22,19 @@
             android:name="Place"
             app:argType="com.example.trabzonrehberim.Place" />
     </fragment>
+    <fragment
+        android:id="@+id/activitiesFragment"
+        android:name="com.example.trabzonrehberim.ActivitiesFragment"
+        android:label="fragment_activities"
+        tools:layout="@layout/fragment_activities" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.trabzonrehberim.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.example.trabzonrehberim.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" />
 </navigation>
