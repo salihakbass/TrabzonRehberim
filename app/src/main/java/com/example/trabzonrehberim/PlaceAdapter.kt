@@ -1,34 +1,45 @@
 package com.example.trabzonrehberim
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.trabzonrehberim.databinding.PlaceCardViewBinding
 
-class PlaceAdapter(private val places: List<Place>) : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>() {
-    class PlaceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val name: TextView = itemView.findViewById(R.id.tvPlace)
-        val image: ImageView = itemView.findViewById(R.id.imgPlace)
-    }
+class PlaceAdapter(
+    private val places: List<Place>
+) :
+    RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>() {
+    class PlaceViewHolder(val binding: PlaceCardViewBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.place_card_view, parent, false)
-        return PlaceViewHolder(view)
+        val binding =
+            PlaceCardViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return PlaceViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
         val place = places[position]
-        holder.name.text = place.name
-        // Google Places photo API ile resim yükleme
-        val photoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=${place.photos?.get(0)?.photo_reference}&key=AIzaSyAL5krlD2zjNRHF3rm1f9ZG9af-xUd_c0o"
-        Glide.with(holder.itemView.context).load(photoUrl).into(holder.image)
+        with(holder.binding) {
+            tvPlace.text = place.name
+            Glide.with(imgPlace.context)
+                .load(place.image)
+                .apply(RequestOptions.circleCropTransform())
+                .override(400, 400)
+                .into(imgPlace)
+
+            cardView.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(place)
+                Navigation.findNavController(it).navigate(action)
+            }
+        }
+
+
     }
 
-    override fun getItemCount(): Int {
-        return places.size
-    }
+    override fun getItemCount(): Int = places.size
 }
+
