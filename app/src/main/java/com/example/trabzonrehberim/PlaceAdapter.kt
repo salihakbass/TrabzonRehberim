@@ -27,7 +27,6 @@ class PlaceAdapter(
             tvPlace.text = place.name
             Glide.with(imgPlace.context)
                 .load(place.image)
-                .apply(RequestOptions.circleCropTransform())
                 .override(400, 400)
                 .into(imgPlace)
 
